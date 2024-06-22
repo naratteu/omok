@@ -1,0 +1,9 @@
+﻿{
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "wwwroot"
+  },
+  "include": [
+    "*.ts"
+  ]
+}

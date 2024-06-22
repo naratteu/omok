@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Naratteu.PeerJS\Naratteu.PeerJS.csproj" />
+  <Project Path="omok\omok.csproj" />
+  <Project Path="ts_gen\ts_gen.csproj" />
+</Solution>
