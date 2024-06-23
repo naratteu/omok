@@ -9,7 +9,7 @@
   <ItemGroup>
     <SupportedPlatform Include="browser" />
 
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.6" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.5.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
