@@ -25,6 +25,7 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.x"
+      - run: dotnet build ./$(basename $GITHUB_REPOSITORY)
       - run: dotnet publish ./$(basename $GITHUB_REPOSITORY) -o ./pub
       - name: Page Base Dir Setting
         run: sed -i "/<base href=/s|/|/$(basename $GITHUB_REPOSITORY)/|" ./pub/wwwroot/index.html
