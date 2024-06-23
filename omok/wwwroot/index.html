@@ -20,17 +20,6 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
-    <script type="module">
-        import { Peer } from "https://esm.sh/peerjs@1.5.4?bundle-deps"
-        const peer = new Peer();
-        peer.on('open', function (id) {
-            console.log('My peer ID is: ' + id);
-            var conn = peer.connect("f5918d84-9718-4531-a223-fb2d525d7bdf");
-            conn.on('open', function () {
-                conn.send('hi!');
-            });
-        });
-    </script>
 </body>
 
 </html>

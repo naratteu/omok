@@ -1,14 +1,46 @@
 ﻿@page "/"
 @inject test test
 
-<h1>Hello, world!</h1>
+<h1>@echo</h1>
 
-@echo
+@if (id is { } i)
+{
+    <p>My Peer.Id is @id</p>
+}
+@if (url is { } u)
+{
+    <a href=@u>@u</a>
+}
+@foreach (var c in chat)
+{
+    <p>@c</p>
+}
 
 @code {
-    string? echo;
+    string echo = "Initializing..";
+    string? id, url;
+    [SupplyParameterFromQuery] public string? conn_to { get; init; }
+    Queue<string> chat = [];
     protected override async Task OnInitializedAsync()
     {
-        echo = await test.echo("ts interop test");
+        echo = await test.echo("Hello, Typescript!");
+        StateHasChanged();
+        (var peer, id) = await test.OpenPeer();
+        StateHasChanged();
+        url = await test.createConnectionUrl(id);
+        StateHasChanged();
+
+        _ = await peer.Serv(new()
+        {
+            oo = id => { chat.Enqueue("conn: " + id); StateHasChanged(); },
+            od = msg => { chat.Enqueue("? say : " + msg); StateHasChanged(); },
+        });
+
+        if (conn_to is { } ct)
+        {
+            var (conn, _) = await peer.Conn(ct);
+            chat.Enqueue("i say: " + await conn.Send("hi!"));
+            StateHasChanged();
+        }
     }
 }
